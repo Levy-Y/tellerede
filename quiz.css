@@ -1,0 +1,28 @@
+#quiz-container {
+  margin: 20px;
+}
+
+#answer-container div {
+  margin: 5px 0;
+}
+
+#feedback-container div {
+  margin: 5px 0;
+}
+
+.correct-answer {
+  background-color: #cfc;
+}
+
+.incorrect-answer {
+  background-color: #fcc;
+}
+
+.question-container,
+.question-index {
+  font-weight: bold;
+}
+
+.question-index {
+  user-select: none;
+}

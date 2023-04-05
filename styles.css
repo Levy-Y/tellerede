@@ -1,57 +1,67 @@
-*{
+* {
     padding: 0;
-    margin:0;
+    margin: 0;
 }
-body{
+
+body {
     overflow-x: hidden;
     height: 10000px;
-    background: linear-gradient( 200deg, #051722 , #354649  , #6C7A89, #A3C6C4 ,#E0E7E9    );
-   
+    background: linear-gradient(200deg, #051722, #354649, #6C7A89, #A3C6C4, #E0E7E9);
+
 }
-main{
-    background-color:#F2D2BD;
+
+main {
+    background-color: #F2D2BD;
     height: auto;
-   
+
 }
-#icon{
+
+#icon {
     width: 200px;
     margin: 20px;
 }
-.header{
+
+.header {
     width: 100%;
     position: relative;
-    background: linear-gradient(to left top, #28282B, #000000		 ) 	;
+    background: linear-gradient(to left top, #28282B, #000000);
     background-repeat: no-repeat;
 }
-nav{
+
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
 }
-.nav-links{
+
+.nav-links {
     flex: 1;
     text-align: right;
 }
-.nav-links ul{
+
+.nav-links ul {
     padding: 0 30px;
 }
-.nav-links ul li{
+
+.nav-links ul li {
     list-style-type: none;
     display: inline-block;
     padding: 0 30px;
     position: relative;
 }
-.nav-links ul li a{
+
+.nav-links ul li a {
     text-decoration: none;
-    color: #D3D3D3	 ;
-    font-family: 'Anton', sans-serif;                                                                                  
+    color: #D3D3D3;
+    font-family: 'Anton', sans-serif;
     font-size: 30px;
     transition: 0.5s;
     letter-spacing: 5px;
-    
+
 }
-.nav-links ul li a:after{
+
+.nav-links ul li a:after {
     content: "";
     position: absolute;
     background-color: grey;
@@ -60,25 +70,26 @@ nav{
     left: 25px;
     bottom: -7px;
     transition: 0.5s;
-    
+
 }
 
-.nav-links ul li a:hover{
-    color: 	white;
-  
+.nav-links ul li a:hover {
+    color: white;
+
 }
 
-.nav-links ul li a:hover::after{
+.nav-links ul li a:hover::after {
     width: 80%;
     transition: 1s;
 
 }
 
-.btn-close{
+.btn-close {
     display: none;
     transition: 1s;
 }
-#menuicon{
+
+#menuicon {
     display: none;
     cursor: pointer;
     transition: 1s;
@@ -90,19 +101,19 @@ nav{
     width: 100%;
     height: 100vh;
     overflow: hidden;
-  }
-  
-  .slides {
+}
+
+.slides {
     position: absolute;
     top: 0;
     left: 0;
     width: 300%;
     height: 100%;
     transition: 2s ease;
-  }
-  
-  
-  .slide {
+}
+
+
+.slide {
     width: 33.33%;
     height: 100%;
     float: left;
@@ -110,19 +121,19 @@ nav{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-  }
-  
-  .slide::before {
+}
+
+.slide::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.5);
-  }
-  
-  .slide-data {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.slide-data {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -130,22 +141,22 @@ nav{
     text-align: center;
     transform: translateY(-50%);
     padding: 0 20%;
-  }
-  
-  .slide-data h1 {
+}
+
+.slide-data h1 {
     font-family: "ICA Rubrik", serif;
     font-weight: bolder;
     text-transform: uppercase;
     font-size: 45px;
-  }
-  
-  .slide-data p {
+}
+
+.slide-data p {
     font-family: "Lato", serif;
     font-size: 18px;
     margin-bottom: 10px;
-  }
-  
-  .slide-data button {
+}
+
+.slide-data button {
     padding: 10px 25px;
     color: #fff;
     border: 1px solid #fff;
@@ -153,26 +164,26 @@ nav{
     outline: none;
     font-size: 25px;
     font-weight: bolder;
-  }
-  
-  .slide-data button:hover {
+}
+
+.slide-data button:hover {
     color: #000;
     background-color: #fff;
-  }
-  
-  .slide-1 {
+}
+
+.slide-1 {
     background-image: url(20180115159.jpg);
-  }
-  
-  .slide-2 {
+}
+
+.slide-2 {
     background-image: url(bomba2_121030_600.jpg);
-  }
-  
-  .slide-3 {
+}
+
+.slide-3 {
     background-image: url(teller-ede-head-630x320.jpg);
-  }
-  
-  .slider .arrows {
+}
+
+.slider .arrows {
     display: flex;
     position: absolute;
     top: 50%;
@@ -180,159 +191,170 @@ nav{
     color: #fff;
     font-size: 60px;
     transition: 0.4s linear;
-  }
-  
-  .slider .arrows:hover {
+}
+
+.slider .arrows:hover {
     color: #000;
     text-shadow: 0px 0px 10px #fff, 0px 0px 10px #fff;
-  }
-  
-  .slider .arrows label {
+}
+
+.slider .arrows label {
     display: none;
-  }
-  
-  .slider .arrow-left {
+}
+
+.slider .arrow-left {
     left: 3%;
-  }
-  
-  .slider .arrow-right {
+}
+
+.slider .arrow-right {
     right: 3%;
-  }
-  
-  .slider input:nth-child(1):checked ~ .slides {
+}
+
+.slider input:nth-child(1):checked~.slides {
     left: 0;
-  }
-  
-  .slider input:nth-child(2):checked ~ .slides {
+}
+
+.slider input:nth-child(2):checked~.slides {
     left: -100%;
-  }
-  
-  .slider input:nth-child(3):checked ~ .slides {
+}
+
+.slider input:nth-child(3):checked~.slides {
     left: -200%;
-  }
-  
-  .slider input:nth-child(1):checked ~ .arrows label:nth-child(1),
-  .slider input:nth-child(2):checked ~ .arrows label:nth-child(2),
-  .slider input:nth-child(3):checked ~ .arrows label:nth-child(3) {
+}
+
+.slider input:nth-child(1):checked~.arrows label:nth-child(1),
+.slider input:nth-child(2):checked~.arrows label:nth-child(2),
+.slider input:nth-child(3):checked~.arrows label:nth-child(3) {
     display: block;
-  }
-  
-  .slider .dots {
+}
+
+.slider .dots {
     width: 100%;
     text-align: center;
     position: absolute;
     bottom: 15px;
-  }
-  
-  .slider .dots label {
+}
+
+.slider .dots label {
     display: inline-block;
     border-radius: 100%;
     margin: 0 6px;
     width: 25px;
     height: 25px;
     background-color: #fff;
-  }
-  
-  .slider input:nth-child(1):checked ~ .dots label:nth-child(1),
-  .slider input:nth-child(2):checked ~ .dots label:nth-child(2),
-  .slider input:nth-child(3):checked ~ .dots label:nth-child(3) {
+}
+
+.slider input:nth-child(1):checked~.dots label:nth-child(1),
+.slider input:nth-child(2):checked~.dots label:nth-child(2),
+.slider input:nth-child(3):checked~.dots label:nth-child(3) {
     background-color: #000;
     border: 2px solid #fff;
-  }
+}
 
-  h1{
+h1 {
     color: white;
     font-family: 'Anton', sans-serif;
     text-align: center;
     font-size: 70px;
-  }
-  h2{
-    text-align: center; font-size: 50px; font-family: 'anton', sans-serif; text-shadow: grey 0 0 10px; color: white;
-  }
+}
+
+h2 {
+    text-align: center;
+    font-size: 50px;
+    font-family: 'anton', sans-serif;
+    text-shadow: grey 0 0 10px;
+    color: white;
+}
 
 
-.kartyak{
-    background: url("istockphoto-936903524-612x612.jpg") ;
+.kartyak {
+    background: url("istockphoto-936903524-612x612.jpg");
     height: auto;
     background-repeat: repeat;
     background-size: cover;
     background-attachment: scroll;
-    background-position: center ;
+    background-position: center;
     height: 1000px;
 }
 
-.kartya{
-  width: 80%;
-  max-width: 400px;
-  padding: 5rem 2.5rem;
-  border-radius: 1rem;
-  border: 1px solid transparent;
-  backdrop-filter: blur(1rem);
-  box-shadow: 1.3rem 1.3rem 1.3rem rgba(0,0,0,0.5);
-  background-color: rgba(225,225,255,0.1);
-  border-top-color: rgba(230, 230, 255, 0.5) ;
-  border-left-color: rgba(230,230,255,0.5) ;
-  border-bottom-color: rgba(225,225,255,0.1) ;
-  border-right-color: rgba(225,225,255,0.1) ;
-  color: white;
-  transition: 1s;
-  text-shadow: 0 0 2px #D3D3D3 ;
-  height: 400px;
-  text-align: center;
-  align-items: center;
+.kartya {
+    width: 80%;
+    max-width: 400px;
+    padding: 5rem 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+    background-color: rgba(225, 225, 255, 0.1);
+    border-top-color: rgba(230, 230, 255, 0.5);
+    border-left-color: rgba(230, 230, 255, 0.5);
+    border-bottom-color: rgba(225, 225, 255, 0.1);
+    border-right-color: rgba(225, 225, 255, 0.1);
+    color: white;
+    transition: 1s;
+    text-shadow: 0 0 2px #D3D3D3;
+    height: 400px;
+    text-align: center;
+    align-items: center;
 
 }
-.kartyak a{
+
+.kartyak a {
     text-decoration: none;
     color: white;
 }
-.kartya:hover{
-  box-shadow: 10px 10px 30px #D3D3D3 ;
-  transition: 1s;
+
+.kartya:hover {
+    box-shadow: 10px 10px 30px #D3D3D3;
+    transition: 1s;
 }
 
-.choose{
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-  padding: 5rem 2.5rem;
-  border-radius: 1rem;
-  backdrop-filter: blur(1rem);
-  color: white;
-  transition: 1s;
-  text-shadow: 0 0 2px #D3D3D3 ;
-  background: linear-gradient(#899499	 ,black);
-  background-repeat: no-repeat;
+.choose {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    padding: 5rem 2.5rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(1rem);
+    color: white;
+    transition: 1s;
+    text-shadow: 0 0 2px #D3D3D3;
+    background: linear-gradient(#899499, black);
+    background-repeat: no-repeat;
 }
-#valasz{
-  background-image: url(background-khaoticfuture.gif);
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: center  ;
-  height: 700px;
- 
+
+#valasz {
+    background-image: url(background-khaoticfuture.gif);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    height: 700px;
+
 
 }
-#contact{
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  color: #D3D3D3;
+
+#contact {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #D3D3D3;
 }
-.footer{
-	background-color: #24262b;
+
+.footer {
+    background-color: #24262b;
     padding: 70px 0;
 
 }
 
-.szovegek{
+.szovegek {
     width: 100%;
 }
-.valami{
+
+.valami {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -340,40 +362,47 @@ nav{
     text-align: center;
     align-items: center;
 }
-.doboz{
+
+.doboz {
     box-sizing: border-box;
     width: 800px;
     color: #4A0404;
 }
-.doboz h1{
+
+.doboz h1 {
     font-family: 'Acme', sans-serif;
     font-size: 70px;
 }
-.doboz p{
+
+.doboz p {
     font-size: 20px;
 }
-.doboz img{
-  width: 600px;
-  border-radius: 20px ;
-  box-shadow: 20px 20px 50px darkslategrey;
+
+.doboz img {
+    width: 600px;
+    border-radius: 20px;
+    box-shadow: 20px 20px 50px darkslategrey;
 }
-@media (max-width: 1300px){
-    header{
+
+@media (max-width: 1300px) {
+    header {
         padding: 2% 6%;
     }
-    #menuicon{
+
+    #menuicon {
         display: block;
         transition: 1s;
 
     }
 
-    .navlinks ul li{
-        display:block;
+    .navlinks ul li {
+        display: block;
         transition: 1s;
     }
-    .nav-links{
+
+    .nav-links {
         position: absolute;
-        background: linear-gradient( #1B1212	,#36454F		);
+        background: linear-gradient(#1B1212, #36454F);
         height: 530px;
         width: 350px;
         top: 0;
@@ -383,53 +412,64 @@ nav{
         display: none;
         transition: 1s;
     }
-    
-    .btn-close{
+
+    .btn-close {
         display: block;
         width: 200px;
         height: 200px;
         margin: 30px 0 30px 60px;
         transition: 1s;
     }
-    #icon{
+
+    #icon {
         width: 300px;
     }
-    h1{
-      font-size: 50px;
+
+    h1 {
+        font-size: 50px;
     }
-    .doboz img{
-      width: 400px;
-      
+
+    .doboz img {
+        width: 400px;
+
     }
 }
-@media (max-width: 425px){
 
-    #icon{
+@media (max-width: 425px) {
+
+    #icon {
         width: 120px;
     }
-    #menuicon{
+
+    #menuicon {
         width: 50px;
     }
-    .slides h1{
-      font-size: 30px;
+
+    .slides h1 {
+        font-size: 30px;
     }
-    h1{
-      font-size: 50px;
+
+    h1 {
+        font-size: 50px;
     }
-    h2{
-      font-size: 30px;
+
+    h2 {
+        font-size: 30px;
     }
-    .kartya{
-      max-width: 300px;
-      margin: 0;
+
+    .kartya {
+        max-width: 300px;
+        margin: 0;
     }
-    .choose{
-      max-width: 300px;
-      margin: 0;
+
+    .choose {
+        max-width: 300px;
+        margin: 0;
     }
-    .doboz img{
-      width: 200px;
-      
+
+    .doboz img {
+        width: 200px;
+
     }
-    
+
 }
