@@ -1,166 +1,108 @@
-// Használt css-classok: correct-answer, incorrect-answer, question-container, question-index
+var myQuestions = [
+	{
+		question: "What is 10/2?",
+		answers: {
+			a: '3',
+			b: '5',
+			c: '115'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "What is 30/3?",
+		answers: {
+			a: '3',
+			b: '5',
+			c: '10'
+		},
+		correctAnswer: 'c'
+	}
+];
 
-// A kérdések importáláshoz szükséges a 'type="module"' attribútum a HTML fájlban a quiz.js script importálásakor!
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
 
-import { questions } from './questions.js';
+generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
 
-// Eltároljuk a jelenlegi kérdés számát, a helyes válaszok számát és a felhasználó válaszait
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 
-let currentQuestion = 0;
-let numCorrectAnswers = 0;
-let userAnswers = {};
+	function showQuestions(questions, quizContainer){
+		// we'll need a place to store the output and the answer choices
+		var output = [];
+		var answers;
 
-// HTML elemek összerendelése változókhoz
+		// for each question...
+		for(var i=0; i<questions.length; i++){
+			
+			// first reset the list of answers
+			answers = [];
 
-const questionContainer = document.querySelector('.question-container')
-const answerContainer = document.querySelector('#answer-container');
-const feedbackContainer = document.querySelector('#feedback-container');
-const continueBtn = document.querySelector('#continue-btn');
-const resetBtn = document.querySelector('#reset-btn');
+			// for each available answer...
+			for(letter in questions[i].answers){
 
-// Kérdés megjelenítése
+				// ...add an html radio button
+				answers.push(
+					'<label>'
+						+ '<input type="radio" name="question'+i+'" value="'+letter+'">'
+						+ letter + ': '
+						+ questions[i].answers[letter]
+					+ '</label>'
+				);
+			}
 
-function showQuestion(questionIndex) {
+			// add this question and its answers to the output
+			output.push(
+				'<div class="question">' + questions[i].question + '</div>'
+				+ '<div class="answers">' + answers.join('') + '</div>'
+			);
+		}
 
-    // Jelenlegi kérdés eltárolása, majd a kérdés megjelenítése
+		// finally combine our output list into one string of html and put it on the page
+		quizContainer.innerHTML = output.join('');
+	}
 
-    const currentQuestion = questions[questionIndex];
-    questionContainer.innerHTML = `<span class="question-index">${questionIndex + 1}.</span> ${currentQuestion.question}`;
 
-    // A választási lehetőségek törlése (ennek akkor van jelentősége, ha már volt korábban kérdés), az újrakezdés gomb elrejtése
+	function showResults(questions, quizContainer, resultsContainer){
+		
+		// gather answer containers from our quiz
+		var answerContainers = quizContainer.querySelectorAll('.answers');
+		
+		// keep track of user's answers
+		var userAnswer = '';
+		var numCorrect = 0;
+		
+		// for each question...
+		for(var i=0; i<questions.length; i++){
 
-    answerContainer.innerHTML = '';
-    resetBtn.style.display = 'none';
+			// find selected answer
+			userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+			
+			// if answer is correct
+			if(userAnswer===questions[i].correctAnswer){
+				// add to the number of correct answers
+				numCorrect++;
+				
+				// color the answers green
+				answerContainers[i].style.color = 'lightgreen';
+			}
+			// if answer is wrong or blank
+			else{
+				// color the answers red
+				answerContainers[i].style.color = 'red';
+			}
+		}
 
-    // A lehetséges válaszokon való átiterálás, majd azok egyenként a konténerbe való hozzáadása
+		// show number of correct answers out of total
+		resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
+	}
 
-    currentQuestion.answers.forEach((answer, index) => {
-
-        // Egy div elem létrehozása a rádiógomb és a label elemmel
-
-        const answerElem = document.createElement('div');
-
-        answerElem.innerHTML =
-            `
-            <input type='radio' name='answer' value='${index}' id='answer-${index}'>
-            <label for='answer-${index}'>${answer}</label>
-            `;
-
-        answerContainer.appendChild(answerElem);
-    });
-
-    // Ha egy válasz megadásra kerül, akkor a folytatás gomb engedélyezése
-
-    answerContainer.addEventListener('click', (event) => {
-        if (event.target.type === 'radio') continueBtn.disabled = false;
-    });
-}
-
-// Válasz ellenőrzése
-
-function checkAnswer() {
-    const selectedAnswer = document.querySelector(
-        "input[name='answer']:checked"
-    );
-    if (!selectedAnswer) return;
-
-    // A felhasználó válaszának eltárolása, ha az helyes, a helyes válaszok számának növelése
-
-    userAnswers[currentQuestion] = parseInt(selectedAnswer.value);
-    if (selectedAnswer.value == questions[currentQuestion].correctAnswer) numCorrectAnswers++;
-}
-
-// Végeredmény megjelenítése
-
-function showResults() {
-
-    // Elért pontszám és százalék megjelenítése
-
-    feedbackContainer.innerHTML = `<span>Pontszám: ${numCorrectAnswers}/${questions.length}, Százalék: ${Math.round((numCorrectAnswers / questions.length) * 100)}%</span>`;
-
-    // A kérdéseken való végigiterálás
-
-    questions.forEach((question, questionIndex) => {
-
-        let questionDiv = document.createElement('div');
-
-        // A kérdés megjelenítése
-
-        let questionSpan = document.createElement('span');
-        questionSpan.classList.add('question-container');
-
-        questionSpan.innerHTML = `<span class="question-index">${questionIndex + 1}.</span> ${question.question}`;
-
-        questionDiv.appendChild(questionSpan);
-
-        // A válaszok megjelenítése
-
-        let answerList = document.createElement('ul');
-
-        // A válaszokon való végigiterálás
-
-        question.answers.forEach((answer, answerIndex) => {
-
-            let answerSpan = document.createElement('span');
-
-            // A felhasználó válaszának eltárolása 
-
-            let userAnswer = userAnswers[questionIndex];
-
-            // A helyes válasz megjelenítése zölddel, a helytelen pirossal
-
-            (question.correctAnswer === answerIndex) ? answerSpan.classList.add('correct-answer') : (userAnswer === answerIndex) ? answerSpan.classList.add('incorrect-answer') : null;
-
-            // A felhasználó válaszának megjelölése
-
-            (userAnswer === answerIndex) ? (answerSpan.innerText = '(Ön válasza) ' + answer)  : answerSpan.innerText = answer;
-
-            let answerListItem = document.createElement('li');
-            answerListItem.appendChild(answerSpan);
-            answerList.appendChild(answerListItem);
-
-        });
-
-        questionDiv.appendChild(answerList);
-        feedbackContainer.appendChild(questionDiv);
-
-    });
-
-    // A végeredmény megjelenítése, a kérdések, válaszok és egyéb elemek eltüntetése.
-
-    feedbackContainer.style.display = 'block';
-
-    questionContainer.innerHTML = answerContainer.innerHTML = '';
-    [ questionContainer, answerContainer, continueBtn ].forEach(e => e.style.display = 'none');
-
-    // Újrakezdés gomb megjelenítése
-
-    resetBtn.style.display = 'block';
+	// show questions right away
+	showQuestions(questions, quizContainer);
+	
+	// on submit, show results
+	submitButton.onclick = function(){
+		showResults(questions, quizContainer, resultsContainer);
+	}
 
 }
-
-// Első kérdés megjelenítése
-
-showQuestion(currentQuestion);
-
-// Eseménykezelés
-
-continueBtn.addEventListener('click', () => {
-    checkAnswer();
-    currentQuestion++;
-    (currentQuestion < questions.length) ?
-        (showQuestion(currentQuestion), continueBtn.disabled = true) :
-        (continueBtn.style.display = 'none', showResults());
-});
-
-resetBtn.addEventListener('click', () => {
-    currentQuestion = 0;
-    numCorrectAnswers = 0;
-    userAnswers = {};
-
-    [ questionContainer, answerContainer, continueBtn ].forEach(e => e.style.display = 'block');
-    feedbackContainer.style.display = 'none';
-
-    feedbackContainer.innerHTML = '';
-    showQuestion(currentQuestion);
-});
