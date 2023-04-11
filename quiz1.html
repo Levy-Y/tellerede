@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvíz</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        #urlap {
+            width: 50%;
+            border-radius: 30px;
+            border: 2px solid black;
+            box-shadow: 5px 5px 5px white;
+            background-color: lightgray;
+            color: teal;
+            padding: 1%;
+        }
+
+        #ki {
+            font-weight: 900;
+            font-size: 1.2em;
+        }
+    </style>
+    <script>
+        function elso_kerdes() {
+            var x = document.querySelector("input[type=radio]:checked").value;
+            if (x == 2) {
+                document.getElementById("ki").style.color = "green";
+                document.getElementById("ki").innerHTML = "Jól tudtad!!";
+            }
+            else {
+                document.getElementById("ki").style.color = "red";
+                document.getElementById("ki").innerHTML = "Sajnos, rossz válasz!";
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <form id="urlap">
+        <h4>Melyik tudományterületen volt Teller Ede leginkább ismert?</h4>
+        Kémia <input type="radio" value="1" name="elso"><br>
+        Fizika <input type="radio" value="2" name="elso"><br>
+        Biológia <input type="radio" value="3" name="elso"><br>
+        Matematika <input type="radio" value="4" name="elso"><br><br>
+        <input type="button" value="Ellenőrzés" onclick="elso_kerdes()">
+        <p id="ki"></p>
+        <p>
+            <a href="quiz2.html">Következő kérdés</a>
+        </p>
+    </form>
+</body>
+
+</html>
